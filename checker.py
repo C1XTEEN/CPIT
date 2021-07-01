@@ -41,6 +41,7 @@ def test_code(tests, executable):
     """
     Given all test files, run code on it and see if output is correct
     """
+    failed_case = False
     for test in tests:
         p = subprocess.Popen('./{0} < {1}.in'.format(executable, test), shell=True,
                              stdout=subprocess.PIPE)
@@ -77,6 +78,7 @@ def test_code(tests, executable):
             else:
                 print()
         else:
+            failed_case = True
             print(bcolors.BOLD + "Input:" + bcolors.ENDC)
             print("=================================")
             print(bcolors.OKBLUE, end="")
@@ -103,6 +105,10 @@ def test_code(tests, executable):
         print(bcolors.ENDC, end="")
         print("=================================")
         print()
+    if(failed_case):
+        print("{0}FAILED SAMPLES{1}".format(bcolors.FAIL, bcolors.ENDC))
+    else:
+        print("{0}ALL SAMPLES PASSED{1}".format(bcolors.OKGREEN, bcolors.ENDC))
 
 
 executable = sys.argv[1]
