@@ -1,6 +1,7 @@
 import requests
 import re
 import subprocess
+import sys
 
 
 class bcolors:
@@ -113,5 +114,9 @@ def parse_contest(ID):
         bcolors.OKGREEN, bcolors.ENDC))
 
 
-    # parse_problem(LINK)
-parse_contest("1533")
+parse_type = sys.argv[1]
+parse_type = parse_type.lower()
+if(parse_type == 'o' or parse_type == "p" or parse_type == "1"):
+    parse_problem(sys.argv[2])
+else:
+    parse_contest(sys.argv[2])
