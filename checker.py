@@ -7,7 +7,7 @@ class bcolors:
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
+    WARNING = '\033[33m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
@@ -58,6 +58,7 @@ def test_code(tests, executable):
                 if(len(line)):
                     expected_lines.append(line)
         failed = False
+        capatalization = False
         if(len(results_lines) != len(expected_lines)):
             print(bcolors.FAIL + "FAILED" + bcolors.ENDC)
             failed = True
@@ -67,8 +68,14 @@ def test_code(tests, executable):
                     print(bcolors.FAIL + "FAILED" + bcolors.ENDC)
                     failed = True
                     break
+                elif(results_lines[i] != expected_lines[i]):
+                    capatalization = True
         if(failed == False):
-            print(bcolors.OKGREEN + "ACCEPTED" + bcolors.ENDC)
+            print(bcolors.OKGREEN + "ACCEPTED" + bcolors.ENDC, end="")
+            if(capatalization):
+                print(bcolors.WARNING + " (capatalization)" + bcolors.ENDC)
+            else:
+                print()
         else:
             print(bcolors.BOLD + "Input:" + bcolors.ENDC)
             print("=================================")
