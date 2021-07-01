@@ -18,7 +18,7 @@ def make_file(file_name, content):
         file_name, content), shell=True, stdout=subprocess.PIPE)
 
 
-LINK = "https://codeforces.com/problemset/problem/1538/G"
+LINK = "https://codeforces.com/contest/50/problem/A"
 
 
 def parse_problem(LINK):
@@ -33,18 +33,29 @@ def parse_problem(LINK):
     inputs = []
     outputs = []
     for i in range(len(all_starts)):
+        print(f.text[all_starts[i]:all_ends[i]])
+    for i in range(len(all_starts)):
         if(i & 1):
-            outputs.append((all_starts[i]+6, all_ends[i]-1))
+            outputs.append((all_starts[i], all_ends[i]))
         else:
-            inputs.append((all_starts[i]+6, all_ends[i]-1))
+            inputs.append((all_starts[i], all_ends[i]))
     current_input_num = 1
     current_output_num = 1
     for item in inputs:
-        make_file("{0}.in".format(current_input_num), f.text[item[0]:item[1]])
+        s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
+        if(len(s) and s[0] == '\n'):
+            s = s[1:]
+        if(len(s) and s[-1] == '\n'):
+            s = s[:-1]
+        make_file("{0}.in".format(current_input_num), s)
         current_input_num += 1
     for item in outputs:
-        make_file("{0}.out".format(current_output_num),
-                  f.text[item[0]:item[1]])
+        s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
+        if(len(s) and s[0] == '\n'):
+            s = s[1:]
+        if(len(s) and s[-1] == '\n'):
+            s = s[:-1]
+        make_file("{0}.out".format(current_output_num), s)
         current_output_num += 1
 
 
