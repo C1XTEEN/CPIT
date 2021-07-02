@@ -11,15 +11,8 @@ class bcolors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-
-def raw(string: str, replace: bool = False) -> str:
-    """Returns the raw representation of a string. If replace is true, replace a single backslash's repr \\ with \."""
-    r = repr(string)[1:-1]  # Strip the quotes from representation
-    if replace:
-        r = r.replace('\\\\', '\\')
-    return r
+    UNDERLINE = '\033[4m',
+    WARNING2 = '\u001b[38;5;204m'
 
 
 def get_tests():
@@ -74,7 +67,7 @@ def test_code(tests, executable):
         if(failed == False):
             print(bcolors.OKGREEN + "ACCEPTED" + bcolors.ENDC, end="")
             if(capatalization):
-                print(bcolors.WARNING + " (capatalization)" + bcolors.ENDC)
+                print(bcolors.WARNING2 + " (capatalization)" + bcolors.ENDC)
             else:
                 print()
         else:
@@ -89,19 +82,29 @@ def test_code(tests, executable):
                         print(line)
             print(bcolors.ENDC, end="")
             print("=================================")
+        current_line = 0
         print(bcolors.BOLD + "Results:" + bcolors.ENDC)
         print("=================================")
         print(bcolors.OKBLUE, end="")
         for line in results_lines:
-            print(line)
+            if(current_line >= len(expected_lines) or line.lower() != expected_lines[current_line].lower()):
+                print(bcolors.WARNING2 + line + bcolors.OKBLUE)
+            else:
+                print(line)
+            current_line += 1
         print(bcolors.ENDC, end="")
         print("=================================")
 
+        current_line = 0
         print(bcolors.BOLD + "Expected:" + bcolors.ENDC)
         print("=================================")
         print(bcolors.OKBLUE, end="")
         for line in expected_lines:
-            print(line)
+            if(current_line >= len(results_lines) or line.lower() != results_lines[current_line].lower()):
+                print(bcolors.WARNING2 + line + bcolors.OKBLUE)
+            else:
+                print(line)
+            current_line += 1
         print(bcolors.ENDC, end="")
         print("=================================")
         print()
