@@ -25,7 +25,7 @@ def get_tests():
         'ls', shell=True, stdout=subprocess.PIPE)
     for line in p.stdout.readlines():
         line = line.decode("utf-8").strip()
-        if('.in' in line):
+        if(len(line) >= 2 and line[-2:] == 'in'):
             tests.append(line[:-3])
     return tests
 
@@ -67,7 +67,7 @@ def test_code(tests, executable):
         if(failed == False):
             print(bcolors.OKGREEN + "ACCEPTED" + bcolors.ENDC, end="")
             if(capatalization):
-                print(bcolors.WARNING2 + " (capatalization)" + bcolors.ENDC)
+                print(bcolors.WARNING + " (capatalization)" + bcolors.ENDC)
             else:
                 print()
         else:
@@ -75,11 +75,16 @@ def test_code(tests, executable):
             print(bcolors.BOLD + "Input:" + bcolors.ENDC)
             print("=================================")
             print(bcolors.OKBLUE, end="")
+            cur_lines = 0
             with open("{0}.in".format(test)) as f:
                 for line in f.readlines():
                     line = line.strip()
                     if(len(line)):
                         print(line)
+                    cur_lines += 1
+                    if(cur_lines > 50):
+                        print(bcolors.BOLD + "(Data truncated)")
+                        break
             print(bcolors.ENDC, end="")
             print("=================================")
         current_line = 0
@@ -92,6 +97,9 @@ def test_code(tests, executable):
             else:
                 print(line)
             current_line += 1
+            if(current_line > 50):
+                print(bcolors.BOLD + "(Data truncated)")
+                break
         print(bcolors.ENDC, end="")
         print("=================================")
 
@@ -105,6 +113,9 @@ def test_code(tests, executable):
             else:
                 print(line)
             current_line += 1
+            if(current_line > 50):
+                print(bcolors.BOLD + "(Data truncated)")
+                break
         print(bcolors.ENDC, end="")
         print("=================================")
         print()
