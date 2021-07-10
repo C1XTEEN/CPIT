@@ -103,12 +103,13 @@ def parse_contest(ID):
     for problem in problems:
         subprocess.Popen('mkdir {0}'.format(problem),
                          shell=True, stdout=subprocess.PIPE)
-        subprocess.Popen('touch {0}/{1}.cpp'.format(
-            problem, problem.lower()), shell=True, stdout=subprocess.PIPE)
+    for problem in problems:
         problem_link = "https://codeforces.com/contest/{0}/problem/{1}".format(
             ID, problem)
         print("{0}Parsing problem {1}{2}{3}".format(bcolors.HEADER,
                                                     bcolors.BOLD, problem, bcolors.ENDC))
+        subprocess.Popen('touch {0}/{1}.cpp'.format(
+            problem, problem.lower()), shell=True, stdout=subprocess.PIPE)
         parse_problem(problem_link, "{0}/".format(problem))
     print("{0}Finished parsing contest{1}".format(
         bcolors.OKGREEN, bcolors.ENDC))
