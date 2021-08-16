@@ -9,6 +9,7 @@ Alias:
 ```
 alias runcode = python3 checker.py
 alias cfparse = python3 parser.py
+alias cpit-rating = python3 rating.py
 ```
 
 ```
@@ -21,4 +22,9 @@ cfparse [1, o, or p] problem_link
 // parses a problem link
 cfparse [c] contest_id
 // parses all problems in the contest
+```
+
+```
+cpit-rating [link]
+// checks the rating of the cf problem with given link
 ```
