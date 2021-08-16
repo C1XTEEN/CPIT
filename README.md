@@ -1,4 +1,5 @@
-# CP-CLI
+# CPIT (Competitive Programming Interface Tool)
+
 ## What it does
 Command line interface for competitive programming
 
