@@ -35,10 +35,12 @@ def test_code(tests, executable):
     Given all test files, run code on it and see if output is correct
     """
     failed_case = False
+    has_debug = False
     for test in tests:
         p = subprocess.Popen('./{0} < {1}.in'.format(executable, test), shell=True,
-                             stdout=subprocess.PIPE)
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         results_lines = []
+        debug_lines = []
         expected_lines = []
         print("Running on test {0}{1}{2}\nVerdict: ".format(
             bcolors.BOLD, test, bcolors.ENDC), end="")
@@ -46,6 +48,10 @@ def test_code(tests, executable):
             line = line.decode("utf-8").strip()
             if(len(line)):
                 results_lines.append(line)
+        for line in p.stderr.readlines():
+            line = line.decode("utf-8").strip()
+            if(len(line)):
+                debug_lines.append(line)
         with open("{0}.out".format(test)) as f:
             for line in f.readlines():
                 line = line.strip()
@@ -118,11 +124,23 @@ def test_code(tests, executable):
                 break
         print(bcolors.ENDC, end="")
         print("=================================")
+        if(len(debug_lines) > 0):
+            has_debug = True
+            print(bcolors.BOLD + "Debug:" + bcolors.ENDC)
+            print("=================================")
+            print(bcolors.WARNING, end="")
+            for line in debug_lines:
+                print(line)
+            print(bcolors.ENDC, end="")
+            print("=================================")
         print()
     if(failed_case):
         print("{0}FAILED SAMPLES{1}".format(bcolors.FAIL, bcolors.ENDC))
     else:
         print("{0}ALL SAMPLES PASSED{1}".format(bcolors.OKGREEN, bcolors.ENDC))
+    if(has_debug):
+        print(bcolors.WARNING +
+              "WARNING: YOUR CODE PRINTED DEBUG STATEMENTS" + bcolors.ENDC)
 
 
 executable = sys.argv[1]
