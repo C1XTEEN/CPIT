@@ -56,7 +56,11 @@ def parse_problem(LINK, path="./"):
     current_output_num = 1
     for i in range(len(inputs)):
         item = inputs[i]
-        s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
+        raw_str = f.text[item[0]:item[1]]
+        raw_str = raw_str.replace("<br />", "\n")
+        raw_str = raw_str.replace("<pre>", "")
+        s = raw_str
+        # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
         if(len(s) and s[0] == '\n'):
             s = s[1:]
         if(len(s) and s[-1] == '\n'):
@@ -70,7 +74,11 @@ def parse_problem(LINK, path="./"):
         current_input_num += 1
 
         item = outputs[i]
-        s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
+        raw_str = f.text[item[0]:item[1]]
+        raw_str = raw_str.replace("<br />", "\n")
+        raw_str = raw_str.replace("<pre>", "")
+        s = raw_str
+        # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
         if(len(s) and s[0] == '\n'):
             s = s[1:]
         if(len(s) and s[-1] == '\n'):
