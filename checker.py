@@ -76,23 +76,24 @@ def test_code(tests, executable):
                 print(bcolors.WARNING + " (capatalization)" + bcolors.ENDC)
             else:
                 print()
-        else:
+        else:  # if you only want to print input if failed, then tab the part below
             failed_case = True
-            print(bcolors.BOLD + "Input:" + bcolors.ENDC)
-            print("=================================")
-            print(bcolors.OKBLUE, end="")
-            cur_lines = 0
-            with open("{0}.in".format(test)) as f:
-                for line in f.readlines():
-                    line = line.strip()
-                    if(len(line)):
-                        print(line)
-                    cur_lines += 1
-                    if(cur_lines > 50):
-                        print(bcolors.BOLD + "(Data truncated)")
-                        break
-            print(bcolors.ENDC, end="")
-            print("=================================")
+        print(bcolors.BOLD + "Input:" + bcolors.ENDC)
+        print("=================================")
+        print(bcolors.OKBLUE, end="")
+        cur_lines = 0
+        with open("{0}.in".format(test)) as f:
+            for line in f.readlines():
+                line = line.strip()
+                if(len(line)):
+                    print(line)
+                cur_lines += 1
+                if(cur_lines > 50):
+                    print(bcolors.BOLD + "(Data truncated)")
+                    break
+        print(bcolors.ENDC, end="")
+        print("=================================")
+
         current_line = 0
         print(bcolors.BOLD + "Results:" + bcolors.ENDC)
         print("=================================")

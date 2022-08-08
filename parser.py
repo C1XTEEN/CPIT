@@ -37,59 +37,62 @@ LINK = "https://codeforces.com/contest/50/problem/A"
 
 
 def parse_problem(LINK, path="./"):
-    name = ""
-    for i in range(len(LINK)-1, -1, -1):
-        if(LINK[i] == '/'):
-            break
-        name += LINK[i]
-    f = requests.get(LINK)
-    all_starts = [m.start() for m in re.finditer("<pre>", f.text)]
-    all_ends = [m.start() for m in re.finditer("</pre>", f.text)]
-    inputs = []
-    outputs = []
-    for i in range(len(all_starts)):
-        if(i & 1):
-            outputs.append((all_starts[i], all_ends[i]))
-        else:
-            inputs.append((all_starts[i], all_ends[i]))
-    current_input_num = 1
-    current_output_num = 1
-    for i in range(len(inputs)):
-        item = inputs[i]
-        raw_str = f.text[item[0]:item[1]]
-        raw_str = raw_str.replace("<br />", "\n")
-        raw_str = raw_str.replace("<pre>", "")
-        s = raw_str
-        # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
-        if(len(s) and s[0] == '\n'):
-            s = s[1:]
-        if(len(s) and s[-1] == '\n'):
-            s = s[:-1]
-        print("Parsing input {0}{1}{2}".format(
-            bcolors.BOLD, current_input_num, bcolors.ENDC))
-        print("=================================")
-        print("{0}{1}{2}".format(bcolors.OKBLUE, s, bcolors.ENDC))
-        print("=================================")
-        make_file("{0}{1}.in".format(path, current_input_num), s)
-        current_input_num += 1
+    try:
+        name = ""
+        for i in range(len(LINK)-1, -1, -1):
+            if(LINK[i] == '/'):
+                break
+            name += LINK[i]
+        f = requests.get(LINK)
+        all_starts = [m.start() for m in re.finditer("<pre>", f.text)]
+        all_ends = [m.start() for m in re.finditer("</pre>", f.text)]
+        inputs = []
+        outputs = []
+        for i in range(len(all_starts)):
+            if(i & 1):
+                outputs.append((all_starts[i], all_ends[i]))
+            else:
+                inputs.append((all_starts[i], all_ends[i]))
+        current_input_num = 1
+        current_output_num = 1
+        for i in range(len(inputs)):
+            item = inputs[i]
+            raw_str = f.text[item[0]:item[1]]
+            raw_str = raw_str.replace("<br />", "\n")
+            raw_str = raw_str.replace("<pre>", "")
+            s = raw_str
+            # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
+            if(len(s) and s[0] == '\n'):
+                s = s[1:]
+            if(len(s) and s[-1] == '\n'):
+                s = s[:-1]
+            print("Parsing input {0}{1}{2}".format(
+                bcolors.BOLD, current_input_num, bcolors.ENDC))
+            print("=================================")
+            print("{0}{1}{2}".format(bcolors.OKBLUE, s, bcolors.ENDC))
+            print("=================================")
+            make_file("{0}{1}.in".format(path, current_input_num), s)
+            current_input_num += 1
 
-        item = outputs[i]
-        raw_str = f.text[item[0]:item[1]]
-        raw_str = raw_str.replace("<br />", "\n")
-        raw_str = raw_str.replace("<pre>", "")
-        s = raw_str
-        # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
-        if(len(s) and s[0] == '\n'):
-            s = s[1:]
-        if(len(s) and s[-1] == '\n'):
-            s = s[:-1]
-        print("Parsing output {0}{1}{2}".format(
-            bcolors.BOLD, current_output_num, bcolors.ENDC))
-        print("=================================")
-        print("{0}{1}{2}".format(bcolors.OKBLUE, s, bcolors.ENDC))
-        print("=================================")
-        make_file("{0}{1}.out".format(path, current_output_num), s)
-        current_output_num += 1
+            item = outputs[i]
+            raw_str = f.text[item[0]:item[1]]
+            raw_str = raw_str.replace("<br />", "\n")
+            raw_str = raw_str.replace("<pre>", "")
+            s = raw_str
+            # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
+            if(len(s) and s[0] == '\n'):
+                s = s[1:]
+            if(len(s) and s[-1] == '\n'):
+                s = s[:-1]
+            print("Parsing output {0}{1}{2}".format(
+                bcolors.BOLD, current_output_num, bcolors.ENDC))
+            print("=================================")
+            print("{0}{1}{2}".format(bcolors.OKBLUE, s, bcolors.ENDC))
+            print("=================================")
+            make_file("{0}{1}.out".format(path, current_output_num), s)
+            current_output_num += 1
+    except Exception as e:
+        print(e)
 
 
 def parse_contest(ID):
