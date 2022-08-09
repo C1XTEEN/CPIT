@@ -80,6 +80,8 @@ def parse_problem(LINK, path="./"):
             raw_str = f.text[item[0]:item[1]]
             raw_str = raw_str.replace("<br />", "\n")
             raw_str = raw_str.replace("<pre>", "")
+            raw_str = re.sub(r"<div class=.*?>", "", raw_str)
+            raw_str = re.sub(r"</div>", "\n", raw_str)
             s = raw_str
             # s = f.text[item[0]:item[1]].replace("<br />", "").replace("<pre>", "")
             if(len(s) and s[0] == '\n'):
