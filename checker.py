@@ -180,5 +180,6 @@ def test_code(executable: str):
               "WARNING: YOUR CODE PRINTED DEBUG STATEMENTS" + bcolors.ENDC)
 
 
-executable = sys.argv[1]
-test_code(executable)
+if __name__ == "__main__":
+    executable = sys.argv[1]
+    test_code(executable)

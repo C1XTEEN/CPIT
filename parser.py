@@ -58,8 +58,7 @@ def parse_problem(LINK, path="./"):
         for i in range(len(inputs)):
             item = inputs[i]
             raw_str = f.text[item[0]:item[1]]
-            raw_str = raw_str.replace("<br />", "\n")
-            raw_str = raw_str.replace("<pre>", "")
+            raw_str = raw_str.replace("<br />", "\n").replace("<pre>", "")
             raw_str = re.sub(r"<div class=.*?>", "", raw_str)
             raw_str = re.sub(r"</div>", "\n", raw_str)
             s = raw_str
@@ -130,9 +129,10 @@ def parse_contest(ID):
         bcolors.OKGREEN, bcolors.ENDC))
 
 
-parse_type = sys.argv[1]
-parse_type = parse_type.lower()
-if(parse_type == 'o' or parse_type == "p" or parse_type == "1"):
-    parse_problem(sys.argv[2])
-else:
-    parse_contest(sys.argv[2])
+if __name__ == "__main__":
+    parse_type = sys.argv[1]
+    parse_type = parse_type.lower()
+    if(parse_type == 'o' or parse_type == "p" or parse_type == "1"):
+        parse_problem(sys.argv[2])
+    else:
+        parse_contest(sys.argv[2])
