@@ -4,7 +4,7 @@ import subprocess
 import sys
 
 
-def main():
+def get_difficulty():
     LINK = input("Problem link: ")
     f = requests.get(LINK)
     ind = f.text.find('title="Difficulty')
@@ -26,4 +26,4 @@ def main():
 
 
 if(__name__ == "__main__"):
-    main()
+    get_difficulty()
