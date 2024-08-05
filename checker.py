@@ -25,7 +25,7 @@ def get_tests():
         'ls', shell=True, stdout=subprocess.PIPE)
     for line in p.stdout.readlines():
         line = line.decode("utf-8").strip()
-        if(len(line) >= 2 and line[-2:] == 'in'):
+        if(line.endswith(".in")):
             tests.append(line[:-3])
     return tests
 
