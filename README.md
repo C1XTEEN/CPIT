@@ -3,7 +3,7 @@
 ### Table of Contents 
 - [Background](#Background)  
 - [Summary](#Summary-of-CPIT)  
-- [How to use](#Summary-of-CPIT)
+- [How to use](#How-to-use-it)
 - [Checker](#Checker)
     - [Checker Usage](#Checker-Usage)
 - [Parser](#Parser)
