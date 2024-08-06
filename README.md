@@ -3,7 +3,7 @@
 
 ## Background
 
-I've been doing competitive programming for a few years now, and during that time, I've created a decent amount of command line tools to streamline certain processes in the terminal and make life easier. This repositry is a collection of the tools that I've created, which I hope can help out others! I'd be happy to take any feedback or questions!
+I've been doing competitive programming for a few years now, and during that time, I've created a decent amount of command line tools to streamline certain processes in the terminal and make life easier. This repository is a collection of the tools that I've created, which I hope can help out others! I'd be happy to take any feedback or questions!
 
 ## Summary of CPIT
 This is a command line tool for competitive programming (mainly tested with the Codeforces platform, and for users who use C++). The main tools provided by this is the ability to automatically test your code against sample cases and parse sample cases from the Codeforces website to your local directory. A couple other smaller tools is the ability to get the rating for a problem, and estimate how much memory an array of certain length will take. 
@@ -24,7 +24,7 @@ alias cpit='python3 [PATH_OF_REPO]/cpit.py'
 
 Below are the details to run specific commands. All commands should be ran in the terminal.
 
-#### Automatically test your code against samples
+### Automatically test your code against samples
 
 One of the cool features about this tool is the ability to test your code on sample test cases. Specifically, this tool will automatically check all files with `.in` and `.out` extensions in the directory you are currently in, then run those samples against your code, and print out any differences between your code's output and the expected sample output.
 
@@ -37,7 +37,7 @@ cpit checker [EXECUTABLE_NAME]
 
 ![Checker](assets/checker.png)
 
-#### Parse sample input/output files on Codeforces
+### Parse sample input/output files on Codeforces
 
 To pair with this feature, I also created another feature to parse the sample input/outputs on a Codeforces webpage, then download them locally into `.in` and `.out` files that can then be used with the previous `checker` command. On top of an individual problem, this feature can also parse all the problems of a contest, creating a subdirectory for each problem, with the corresponding sample input/outputs in that subdirectory. 
 
