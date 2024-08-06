@@ -88,7 +88,7 @@ def determine_status(results_lines, expected_lines):
     Prints out the header for the test case
     """
     if len(expected_lines) == 0:
-        print(bcolors.WARNING + "No input file found" + bcolors.ENDC)
+        print(bcolors.WARNING + "No output file found" + bcolors.ENDC)
         return True
     capatalization = False
     if(len(results_lines) != len(expected_lines)):

@@ -134,5 +134,5 @@ if __name__ == "__main__":
     parse_type = parse_type.lower()
     if(parse_type == 'o' or parse_type == "p" or parse_type == "1"):
         parse_problem(sys.argv[2])
-    else:
+    elif parse_type == 'c':
         parse_contest(sys.argv[2])
