@@ -83,7 +83,7 @@ Another small tool is the ability to get the rating of a Codeforces problem in t
 
 #### Rating: Usage
 
-To run this command:
+To run this tool:
 
 ```
 cpit rating
@@ -99,7 +99,7 @@ You will then be prompted to enter a Codeforces problem link, which you can past
 Finally, the last small feature is a tool to help quiclkly estimate how much memory an array will take, which can be important to determine whether a solution will fall in the proper memory limits. 
 
 #### Memory: Usage
-To run the command:
+To run the tool:
 
 ```
 cpit mem
