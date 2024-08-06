@@ -1,6 +1,18 @@
 # CPIT (Competitive Programming Interface Tool)
 
-
+### Table of Contents 
+- [Background](#Background)  
+- [Summary](#Summary-of-CPIT)  
+- [How to use](#Summary-of-CPIT)
+- [Checker](#Checker)
+    - [Checker Usage](#Checker-Usage)
+- [Parser](#Parser)
+    - [Parser Usage](#Parser-Usage)
+- [Rating](#Rating)
+    - [Rating Usage](#Rating-Usage)
+- [Memory](#Memory)
+    - [Memory Usage](#Memory-Usage)
+- [Future Steps](#Future-Steps)
 ## Background
 
 I've been doing competitive programming for a few years now, and during that time, I've created a decent amount of command line tools to streamline certain processes in the terminal and make life easier. This repository is a collection of the tools that I've created, which I hope can help out others! I'd be happy to take any feedback or questions!
@@ -24,11 +36,13 @@ alias cpit='python3 [PATH_OF_REPO]/cpit.py'
 
 Below are the details to run specific commands. All commands should be ran in the terminal.
 
-### Automatically test your code against samples
+### Checker
+**Automatically test your code against samples**
 
 One of the cool features about this tool is the ability to test your code on sample test cases. Specifically, this tool will automatically check all files with `.in` and `.out` extensions in the directory you are currently in, then run those samples against your code, and print out any differences between your code's output and the expected sample output.
 
-To run this command:
+#### Checker: Usage
+To run this tool:
 
 ```
 cpit checker [EXECUTABLE_NAME]
@@ -37,10 +51,12 @@ cpit checker [EXECUTABLE_NAME]
 
 ![Checker](assets/checker.png)
 
-### Parse sample input/output files on Codeforces
+### Parser
+**Parse sample input/output files on Codeforces**
 
 To pair with this feature, I also created another feature to parse the sample input/outputs on a Codeforces webpage, then download them locally into `.in` and `.out` files that can then be used with the previous `checker` command. On top of an individual problem, this feature can also parse all the problems of a contest, creating a subdirectory for each problem, with the corresponding sample input/outputs in that subdirectory. 
 
+#### Parser: Usage
 To parse a single problem:
 
 ```
@@ -60,9 +76,12 @@ cpit parse c [CONTEST_ID]
 ![Parser Contest](assets/parser_contest.png)
 
 
-### Get the rating of Codeforces problems
+### Rating
+**Get the rating of Codeforces problems**
 
 Another small tool is the ability to get the rating of a Codeforces problem in the terminal. Personally, I disable tags in Codeforces problems, which also includes the rating tag. This feature allows me to continue to disable tags, but be able to get the rating if I want to see it.
+
+#### Rating: Usage
 
 To run this command:
 
@@ -74,10 +93,12 @@ You will then be prompted to enter a Codeforces problem link, which you can past
 
 ![Parser](assets/rating.png)
 
-### Estimate memory an array will take
+### Memory
+**Estimate memory an array will take**
 
 Finally, the last small feature is a tool to help quiclkly estimate how much memory an array will take, which can be important to determine whether a solution will fall in the proper memory limits. 
 
+#### Memory: Usage
 To run the command:
 
 ```
@@ -90,7 +111,7 @@ Then, you will be promted with the data type of the array. Currently, it only su
 
 ![Parser](assets/mem.png)
 
-## Future steps
+## Future Steps
 
 I hope to continue improving CPIT and provide more features/tools to enhance convenience in competitive programming. Some future steps I have in mind are:
 
