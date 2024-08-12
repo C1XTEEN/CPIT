@@ -20,7 +20,7 @@ I've been doing competitive programming for a few years now, and during that tim
 ## Summary of CPIT
 This is a command line tool for competitive programming (mainly tested with the Codeforces platform, and for users who use C++). The main tools provided by this is the ability to automatically test your code against sample cases and parse sample cases from the Codeforces website to your local directory. A couple other smaller tools is the ability to get the rating for a problem, and estimate how much memory an array of certain length will take. 
 
-## How to use it
+## Set up
 
 This tool is ran with `python3`. Make sure to install the required libraries to run it.
 
