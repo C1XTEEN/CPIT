@@ -22,6 +22,12 @@ This is a command line tool for competitive programming (mainly tested with the 
 
 ## Set up
 
+First, clone this repository. You can clone this repository anywhere on your computer, as later we will set up an alias to actually run this tool that can be called from anywhere.
+
+```
+git clone https://github.com/C1XTEEN/CPIT.git
+```
+
 This tool is ran with `python3`. Make sure to install the required libraries to run it.
 
 ```
@@ -29,7 +35,7 @@ pip install -r requirements.txt
 ```
 
 To make this tool easier to use, I set up an alias. This can be put in `/.bashrc` to save the alias (or whatever equivalent file for your environment).
-Alias:
+
 ```
 alias cpit='python3 [PATH_OF_REPO]/cpit.py' 
 ```
