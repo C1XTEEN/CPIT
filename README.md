@@ -96,7 +96,7 @@ You will then be prompted to enter a Codeforces problem link, which you can past
 ### Memory
 *Estimate memory an array will take*
 
-Finally, the last small feature is a tool to help quiclkly estimate how much memory an array will take, which can be important to determine whether a solution will fall in the proper memory limits. 
+Finally, the last small feature is a tool to help quickly estimate how much memory an array will take, which can be important to determine whether a solution will fall in the proper memory limits. 
 
 #### Memory: Usage
 To run the tool:
@@ -107,7 +107,7 @@ cpit mem
 
 You will first be prompted with the length of the array, which can be entered as an integer, like `5000`, or in scientific notation, like `4.5e5`. 
 
-Then, you will be promted with the data type of the array. Currently, it only supports `int`, `ll`, and `double`.
+Then, you will be prompted with the data type of the array. Currently, it only supports `int`, `ll`, and `double`.
 
 ![Parser](assets/mem.png)
 
