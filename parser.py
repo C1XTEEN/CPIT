@@ -2,6 +2,7 @@ import requests
 import re
 import subprocess
 import sys
+import cloudscraper
 
 
 class bcolors:
@@ -43,7 +44,9 @@ def parse_problem(LINK, path="./"):
             if(LINK[i] == '/'):
                 break
             name += LINK[i]
-        f = requests.get(LINK)
+        # f = requests.get(LINK)
+        scraper = cloudscraper.create_scraper()
+        f = scraper.get(LINK)
         all_starts = [m.start() for m in re.finditer("<pre>", f.text)]
         all_ends = [m.start() for m in re.finditer("</pre>", f.text)]
         inputs = []
@@ -101,7 +104,9 @@ def parse_problem(LINK, path="./"):
 def parse_contest(ID):
     LINK = "https://codeforces.com/contest/"
     LINK += str(ID)
-    f = requests.get(LINK)
+    # f = requests.get(LINK)
+    scraper = cloudscraper.create_scraper()
+    f = scraper.get(LINK)
     search_link = "/contest/{0}/problem/".format(ID)
     all_starts = [m.start() for m in re.finditer(
         search_link, f.text)]

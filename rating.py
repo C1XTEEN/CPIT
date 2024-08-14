@@ -1,10 +1,12 @@
 import requests
-
+import cloudscraper
 
 def get_difficulty():
     try:
         LINK = input("Problem link: ")
-        f = requests.get(LINK)
+        scraper = cloudscraper.create_scraper()
+        # f = requests.get(LINK)
+        f = scraper.get(LINK)
         ind = f.text.find('title="Difficulty')
         while(f.text[ind] != '*'):
             ind += 1
