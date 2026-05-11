@@ -12,7 +12,7 @@ def get_difficulty():
             ind += 1
         ind += 1
         rating = ""
-        while(f.text[ind] != '\r'):
+        while(f.text[ind] != '\r' and f.text[ind] != '\n'):
             rating += f.text[ind]
             ind += 1
         rating = int(rating)
